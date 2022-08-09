@@ -4,6 +4,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import mongoose from "mongoose";
 import router from "./router/index.js";
+import errorMiddleware from "./middlewares/error-middleware.js";
 
 const PORT = process.env.PORT || 5001
 const app = express()
@@ -12,6 +13,8 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use('/api', router)
+// middleware для ошибок подключается в самом конце
+app.use(errorMiddleware)
 
 const start = async () => {
     try {
