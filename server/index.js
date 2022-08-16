@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import mongoose from "mongoose";
 import router from "./router/index.js";
 import errorMiddleware from "./middlewares/error-middleware.js";
+import authMiddleware from "./middlewares/auth-middleware.js";
 
 const PORT = process.env.PORT || 5001
 const app = express()
