@@ -1,23 +1,21 @@
-const defaultState = {
+import {IUserAction, IUserState, UserActionTypes} from "../types/user";
+
+const initialState: IUserState = {
   userName: '',
   users: [],
 }
 
-const SET_USERNAME = "SET_USERNAME"
-const GET_USERS = "GET_USERS"
-export const ASYNC_GET_USERS = "ASYNC_GET_USERS"
-
-export const userReducer = (state = defaultState, action: any) => {
+export const userReducer = (state = initialState, action: IUserAction): IUserState => {
   switch (action.type) {
-    case SET_USERNAME:
+    case UserActionTypes.SET_USERNAME:
       return {...state, userName: action.payload}
-    case GET_USERS:
+    case UserActionTypes.GET_USERS:
       return {...state, users: [...action.payload]}
     default:
       return state
   }
 }
 
-export const setUserNameAction = (payload:any) => ({type: SET_USERNAME, payload})
-export const getUsersAction = (payload:any) => ({type: GET_USERS, payload})
-export const getAsyncUsersAction = () => ({type: ASYNC_GET_USERS})
+export const setUserNameAction = (payload:any) => ({type: UserActionTypes.SET_USERNAME, payload})
+export const getUsersAction = (payload:any) => ({type: UserActionTypes.GET_USERS, payload})
+export const getAsyncUsersAction = () => ({type: UserActionTypes.ASYNC_GET_USERS})

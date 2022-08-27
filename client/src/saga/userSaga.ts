@@ -1,5 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects"
-import {ASYNC_GET_USERS, getUsersAction} from "../store/reducers/userReducer";
+import {getUsersAction} from "../store/reducers/userReducer";
+import {UserActionTypes} from "../store/types/user";
 
 const fetchUsersFromApi = () =>  fetch('https://jsonplaceholder.typicode.com/users')
 
@@ -10,7 +11,7 @@ function *fetchUserWorker():any {
 }
 
 export function* userWatcher() {
-  yield takeEvery(ASYNC_GET_USERS, fetchUserWorker)
+  yield takeEvery(UserActionTypes.ASYNC_GET_USERS, fetchUserWorker)
 }
 
 

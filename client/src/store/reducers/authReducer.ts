@@ -1,22 +1,21 @@
-const defaultState = {
+import {AuthActionTypes, IAuthAction, IAuthState} from "../types/auth";
+
+const initialState: IAuthState = {
   isAuth: false
 }
 
-const LOG_IN = "LOG_IN"
-const LOG_OUT = "LOG_OUT"
-
-export const authReducer = (state = defaultState, action:any) => {
+export const authReducer = (state = initialState, action: IAuthAction) => {
   // action.payload !!!!
   switch (action.type) {
-    case LOG_IN:
+    case AuthActionTypes.LOG_IN:
       return {...state, isAuth: true}
-    case LOG_OUT:
+    case AuthActionTypes.LOG_OUT:
       return {...state, isAuth: false}
     default:
       return state
   }
 }
 
-export const logInAction = (payload:any) => ({type: LOG_IN, payload})
+export const logInAction = (payload:any) => ({type: AuthActionTypes.LOG_IN, payload})
 
-export const logOutAction = (payload:any) => ({type: LOG_OUT, payload})
+export const logOutAction = (payload:any) => ({type: AuthActionTypes.LOG_OUT, payload})
