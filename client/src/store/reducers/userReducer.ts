@@ -5,6 +5,7 @@ const defaultState = {
 
 const SET_USERNAME = "SET_USERNAME"
 const GET_USERS = "GET_USERS"
+export const ASYNC_GET_USERS = "ASYNC_GET_USERS"
 
 export const userReducer = (state = defaultState, action: any) => {
   switch (action.type) {
@@ -19,3 +20,4 @@ export const userReducer = (state = defaultState, action: any) => {
 
 export const setUserNameAction = (payload:any) => ({type: SET_USERNAME, payload})
 export const getUsersAction = (payload:any) => ({type: GET_USERS, payload})
+export const getAsyncUsersAction = () => ({type: ASYNC_GET_USERS})

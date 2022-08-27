@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {logInAction, logOutAction} from "./store/reducers/authReducer";
 import {fetchUsers} from "./asyncActions/users";
+import {getAsyncUsersAction} from "./store/reducers/userReducer";
 
 function App() {
   const dispatch = useDispatch()
@@ -22,8 +23,9 @@ function App() {
       <button onClick={() => unAuth()}>LOG OUT</button>
       <div>
         {/*@ts-ignore*/}
-        <button onClick={() => dispatch(fetchUsers())}>GET USERS</button>
-        {users.length ? users.map((el:any) => <div>{el.name}</div>) : <div>NO USERS</div>}
+        <button onClick={() => dispatch(fetchUsers())}>GET THUNK USERS</button>
+        <button onClick={() => dispatch(getAsyncUsersAction())}>SAGA GET USERS</button>
+        {users.length ? users.map((el:any) => <div key={el.id}>{el.name}</div>) : <div>NO USERS</div>}
       </div>
     </div>
   );
