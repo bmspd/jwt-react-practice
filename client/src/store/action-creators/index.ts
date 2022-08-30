@@ -1,7 +1,7 @@
 import * as UserActionCreators from './users'
 
 const ActionCreator = {
-  ...UserActionCreators
+  ...UserActionCreators,
 }
 
 export default ActionCreator

@@ -1,12 +1,12 @@
 export enum UserActionTypes {
-  SET_USERNAME = "SET_USERNAME",
-  GET_USERS = "GET_USERS",
-  ASYNC_GET_USERS = "ASYNC_GET_USERS"
+  SET_USERNAME = 'SET_USERNAME',
+  GET_USERS = 'GET_USERS',
+  ASYNC_GET_USERS = 'ASYNC_GET_USERS',
 }
 
 export interface IUserState {
   userName: string
-  users: any[],
+  users: any[]
 }
 
 interface ISetUserNameAction {
