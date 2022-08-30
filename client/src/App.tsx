@@ -12,10 +12,10 @@ function App() {
   const { users } = useTypedSelector((state) => state.user)
 
   const auth = () => {
-    dispatch(logInAction({}))
+    dispatch(logInAction())
   }
   const unAuth = () => {
-    dispatch(logOutAction({}))
+    dispatch(logOutAction())
   }
   return (
     <div>

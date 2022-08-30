@@ -16,6 +16,6 @@ export const authReducer = (state = initialState, action: IAuthAction) => {
   }
 }
 
-export const logInAction = (payload: any) => ({ type: AuthActionTypes.LOG_IN, payload })
+export const logInAction = () => ({ type: AuthActionTypes.LOG_IN })
 
-export const logOutAction = (payload: any) => ({ type: AuthActionTypes.LOG_OUT, payload })
+export const logOutAction = () => ({ type: AuthActionTypes.LOG_OUT })

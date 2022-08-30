@@ -16,6 +16,6 @@ export const userReducer = (state = initialState, action: IUserAction): IUserSta
   }
 }
 
-export const setUserNameAction = (payload: any) => ({ type: UserActionTypes.SET_USERNAME, payload })
+export const setUserNameAction = (payload: string) => ({ type: UserActionTypes.SET_USERNAME, payload })
 export const getUsersAction = (payload: any) => ({ type: UserActionTypes.GET_USERS, payload })
 export const getAsyncUsersAction = () => ({ type: UserActionTypes.ASYNC_GET_USERS })
