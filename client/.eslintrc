@@ -5,10 +5,10 @@
         "jest": true
     },
     "extends": [
-        "airbnb",
         "airbnb-typescript",
         "airbnb/hooks",
         "plugin:@typescript-eslint/recommended",
+        "plugin:jest/recommended",
         "prettier"
     ],
     "overrides": [
@@ -19,12 +19,8 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "settings": {
-        "import/resolver": {
-            "typescript": {}
-        }
-    },
     "plugins": [
+        "import",
         "react",
         "react-hooks",
         "@typescript-eslint",
@@ -35,6 +31,7 @@
         "camelcase": "error",
         "spaced-comment": "error",
         "quotes": ["error", "single"],
-        "no-duplicate-imports": "error"
+        "no-duplicate-imports": "error",
+        "@typescript-eslint/default-param-last": "off"
     }
 }
