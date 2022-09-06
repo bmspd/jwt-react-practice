@@ -5,7 +5,8 @@ import { getAsyncMoreUsersAction, getAsyncUsersAction } from './store/reducers/u
 import { useTypedSelector } from './hooks/useTypedSelector'
 import { useActions } from './hooks/useAction'
 import WelcomePage from './pages/WelcomePage'
-
+import { CssBaseline } from '@mui/material'
+import './styles.scss'
 function App() {
   const dispatch = useDispatch()
   const { fetchUsers, userLogin, userLogout } = useActions()
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div>
+      <CssBaseline />
       <WelcomePage />
       {/* <h1>Test</h1>
       <h1>{isAuth ? 'YES' : 'NO'}</h1>
