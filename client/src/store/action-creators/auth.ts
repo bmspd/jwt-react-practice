@@ -11,7 +11,7 @@ export const userLogin = (email: string, password: string) => async (dispatch: D
 }
 
 export const userLogout = () => async (dispatch: Dispatch<IAuthAction>) => {
-  const response = await AuthService.logout()
+  await AuthService.logout()
   localStorage.removeItem('token')
   dispatch(logOutAction())
 }

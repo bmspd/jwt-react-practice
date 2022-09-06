@@ -4,6 +4,7 @@ import { logInAction, logOutAction } from './store/reducers/authReducer'
 import { getAsyncMoreUsersAction, getAsyncUsersAction } from './store/reducers/userReducer'
 import { useTypedSelector } from './hooks/useTypedSelector'
 import { useActions } from './hooks/useAction'
+import WelcomePage from './pages/WelcomePage'
 
 function App() {
   const dispatch = useDispatch()
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <div>
-      <h1>Test</h1>
+      <WelcomePage />
+      {/* <h1>Test</h1>
       <h1>{isAuth ? 'YES' : 'NO'}</h1>
       <button onClick={() => userLogin('my_spid1@mail.ru', '1234')}>LOG IN</button>
       <button onClick={() => userLogout()}>LOG OUT</button>
@@ -22,7 +24,7 @@ function App() {
         <button onClick={() => dispatch(getAsyncUsersAction())}>SAGA GET USERS</button>
         <button onClick={() => dispatch(getAsyncMoreUsersAction())}>SAGA GET MORE USERS</button>
         {users.length ? users.map((el: any) => <div key={el.id}>{el.name}</div>) : <div>NO USERS</div>}
-      </div>
+      </div>*/}
     </div>
   )
 }
