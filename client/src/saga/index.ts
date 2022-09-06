@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects'
-import { userWatcher } from './userSaga'
+import { userRootWatcher } from './userSaga'
 
 export function* rootWatcher() {
-  yield all([userWatcher()]) // можно еще добавить вотчеров сюда
+  yield all([userRootWatcher()]) // можно еще добавить вотчеров сюда
 }
