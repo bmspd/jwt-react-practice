@@ -1,42 +1,37 @@
 import React from 'react'
 import { Button, Container, Grid, Typography } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { WelcomeContainer, WelcomePageContainer, WelcomeImageGrid, WelcomeContentGrid } from './styled-components'
 import './styles.scss'
-const StyledButton = styled(Button)`
-  background-color: red;
-`
-const WelcomeContainer = styled(Container)`
-  background-color: pink;
-  max-width: 1500px;
-  border-radius: 16px;
-  padding: 12px;
-  width: 100%;
-`
+
 const WelcomePage: React.FC = () => {
   const test = 'a'
   return (
-    <Grid
-      container
-      spacing={0}
-      direction='column'
-      alignItems='center'
-      justifyContent='center'
-      style={{ minHeight: '100vh', padding: '0 4rem' }}
-    >
-      <WelcomeContainer>
-        <Grid container>
-          <Grid className='welcome-image-container' item xs={6}></Grid>
-          <Grid item xs={6}>
-            <Typography variant='h4' component='h1'>
-              WelcomePage
-            </Typography>
-            <div>
-              <StyledButton variant={'contained'}>Hello world</StyledButton>
-            </div>
+    <WelcomePageContainer maxWidth={false}>
+      <Grid
+        container
+        spacing={0}
+        direction='column'
+        alignItems='center'
+        justifyContent='center'
+        style={{ minHeight: '100vh', width: '80%', padding: '0 4rem', margin: 'auto' }}
+      >
+        <WelcomeContainer>
+          <Grid container style={{ height: '100%' }}>
+            <WelcomeImageGrid className='welcome-image-container' item xs={6} />
+            <Grid item xs={6} className='welcome-main-container'>
+              <WelcomeContentGrid container direction='column' alignItems='center' justifyContent='center'>
+                <Typography variant='h4' component='h1'>
+                  WelcomePage
+                </Typography>
+                <div>
+                  <Button variant={'contained'}>Hello world</Button>
+                </div>
+              </WelcomeContentGrid>
+            </Grid>
           </Grid>
-        </Grid>
-      </WelcomeContainer>
-    </Grid>
+        </WelcomeContainer>
+      </Grid>
+    </WelcomePageContainer>
   )
 }
 

@@ -1,5 +1,10 @@
 @media (max-width: 800px) {
   .welcome-image-container {
     display: none;
+    max-width: 0;
+  }
+  .welcome-main-container {
+    max-width: 100%!important;
+    flex-basis: 100%!important;
   }
 }
