@@ -43,6 +43,7 @@ export const WelcomePageContainer = styled(Container)`
 export const WelcomeContainer = styled(Container)`
   background-color: white;
   max-width: 1500px;
+  max-height: 1100px;
   border-radius: 16px;
   width: 100%;
   height: 80vh;

@@ -1,6 +1,9 @@
 import React from 'react'
 import { Button, Container, Grid, Typography } from '@mui/material'
 import { WelcomeContainer, WelcomePageContainer, WelcomeImageGrid, WelcomeContentGrid } from './styled-components'
+import image1 from '../../assets/img/carousel/abstract-1.jpg'
+import image2 from '../../assets/img/carousel/abstract-2.jpg'
+import image3 from '../../assets/img/carousel/abstract-3.jpg'
 import './styles.scss'
 import Carousel from '../../components/Carousel'
 
@@ -19,7 +22,7 @@ const WelcomePage: React.FC = () => {
         <WelcomeContainer>
           <Grid container style={{ height: '100%' }}>
             <WelcomeImageGrid className='welcome-image-container' item xs={6}>
-              <Carousel />
+              <Carousel images={[image1, image2, image3]} />
             </WelcomeImageGrid>
             <Grid item xs={6} className='welcome-main-container'>
               <WelcomeContentGrid container direction='column' alignItems='center' justifyContent='center'>
