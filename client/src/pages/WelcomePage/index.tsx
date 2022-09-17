@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Grid, Typography } from '@mui/material'
+import { Button, Grid, Typography } from '@mui/material'
 import { WelcomeContainer, WelcomePageContainer, WelcomeImageGrid, WelcomeContentGrid } from './styled-components'
 import image1 from '../../assets/img/carousel/abstract-1.jpg'
 import image2 from '../../assets/img/carousel/abstract-2.jpg'
@@ -17,7 +17,7 @@ const WelcomePage: React.FC = () => {
         direction='column'
         alignItems='center'
         justifyContent='center'
-        style={{ minHeight: '100vh', width: '80%', padding: '0 4rem', margin: 'auto' }}
+        style={{ minHeight: '100vh', width: '80%', margin: 'auto' }}
       >
         <WelcomeContainer>
           <Grid container style={{ height: '100%' }}>

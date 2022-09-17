@@ -1,46 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Grid, SvgIcon } from '@mui/material'
+import { Grid } from '@mui/material'
 import { Diamond, KeyboardArrowLeftRounded, KeyboardArrowRightRounded } from '@mui/icons-material'
-import { styled } from '@mui/material/styles'
+import { StyledMainContainer, ImageContainer, StyledIcon } from './styled-components'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
 interface ICarouselProps {
   images: string[]
 }
-interface IStyledIconProps {
-  side: 'left' | 'right'
-}
-const StyledIcon = styled('span')<IStyledIconProps>`
-  svg {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-  }
-`
+
 const Carousel: React.FC<ICarouselProps> = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(0)
+  /* force to preload all images from carousel to avoid empty pictures */
+  useEffect(() => {
+    images.forEach((image) => {
+      const preloadImage = new Image()
+      preloadImage.src = image
+    })
+  })
   return (
-    <Container
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: 'green',
-        height: '100%',
-        gap: '10px',
-      }}
-    >
-      <Container
-        sx={{
-          width: '80%',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'no-wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '12px',
-        }}
-      >
+    <StyledMainContainer disableGutters>
+      <ImageContainer disableGutters>
         <StyledIcon>
           <KeyboardArrowLeftRounded
             onClick={() => {
@@ -50,7 +28,17 @@ const Carousel: React.FC<ICarouselProps> = ({ images }) => {
             fontSize='large'
           />
         </StyledIcon>
-        <img src={images[currentImage]} width='100%' />
+        <div className='image-wrapper'>
+          <SwitchTransition mode='out-in'>
+            <CSSTransition
+              key={images[currentImage]}
+              addEndListener={(node, done) => node.addEventListener('transitionend', done, false)}
+              classNames='carousel'
+            >
+              <img src={images[currentImage]} alt='carousel image' />
+            </CSSTransition>
+          </SwitchTransition>
+        </div>
         <StyledIcon>
           <KeyboardArrowRightRounded
             onClick={() => {
@@ -60,13 +48,19 @@ const Carousel: React.FC<ICarouselProps> = ({ images }) => {
             fontSize='large'
           />
         </StyledIcon>
-      </Container>
+      </ImageContainer>
       <Grid container justifyContent='center'>
-        {images.map((image) => (
-          <Diamond key={image} fontSize={'large'} sx={{ color: 'pink', cursor: 'pointer' }} />
+        {images.map((image, index) => (
+          <Diamond
+            key={image}
+            fontSize='large'
+            cursor='pointer'
+            sx={{ color: index === currentImage ? 'pink' : 'white', transition: 'color 500ms' }}
+            onClick={() => setCurrentImage(index)}
+          />
         ))}
       </Grid>
-    </Container>
+    </StyledMainContainer>
   )
 }
 

@@ -43,10 +43,10 @@ export const WelcomePageContainer = styled(Container)`
 export const WelcomeContainer = styled(Container)`
   background-color: white;
   max-width: 1500px;
-  max-height: 1100px;
+  max-height: 900px;
   border-radius: 16px;
+  aspect-ratio: 7 / 4;
   width: 100%;
-  height: 80vh;
   display: flex;
   flex-direction: row;
   align-items: center;
