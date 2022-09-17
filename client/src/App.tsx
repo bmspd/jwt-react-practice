@@ -9,8 +9,6 @@ import { CssBaseline } from '@mui/material'
 import './styles.scss'
 function App() {
   const dispatch = useDispatch()
-  const { fetchUsers, userLogin, userLogout } = useActions()
-  const { isAuth } = useTypedSelector((state) => state.auth)
   const { users } = useTypedSelector((state) => state.user)
 
   return (

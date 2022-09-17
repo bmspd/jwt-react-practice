@@ -11,7 +11,7 @@ export const WelcomeImageGrid = styled(Grid)`
     rgba(255, 255, 255, 0.4) 100%
   );
 `
-export const WelcomeContentGrid = styled(Grid)`
+export const WelcomeMainContainer = styled(Container)`
   height: 100%;
   padding: 12px;
   box-sizing: border-box;
@@ -22,6 +22,15 @@ export const WelcomeContentGrid = styled(Grid)`
     rgba(229, 197, 250, 1) 81%,
     rgba(255, 255, 255, 0.4) 100%
   );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const WelcomeContentGrid = styled(Grid)`
+  background-color: white;
+  width: 80%;
+  padding: 12px;
+  border-radius: 12px;
 `
 export const WelcomePageContainer = styled(Container)`
   background-image: url(${backgroundPattern});
