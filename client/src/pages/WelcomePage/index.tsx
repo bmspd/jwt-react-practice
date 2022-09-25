@@ -8,6 +8,7 @@ import './styles.scss'
 import Carousel from '../../components/Carousel'
 import WelcomeMain from './components/WelcomeMain'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { Link } from 'react-router-dom'
 
 const WelcomePage: React.FC = () => {
   const { isAuth } = useTypedSelector((state) => state.auth)
@@ -32,6 +33,7 @@ const WelcomePage: React.FC = () => {
           </Grid>
         </WelcomeContainer>
         <h1 style={{ color: 'white' }}>Login status: {isAuth ? 'Logged' : 'Nope'}</h1>
+        <Link to={'/test'}>LINK TO PRIVATE ROUTE</Link>
       </Grid>
     </WelcomePageContainer>
   )
