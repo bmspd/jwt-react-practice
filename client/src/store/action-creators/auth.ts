@@ -6,7 +6,6 @@ import { logInAction, logOutAction } from '../reducers/authReducer'
 export const userLogin = (email: string, password: string) => async (dispatch: Dispatch<IAuthAction>) => {
   const response = await AuthService.login(email, password)
   localStorage.setItem('token', response.data.accessToken)
-  console.log(response.data)
   dispatch(logInAction())
 }
 

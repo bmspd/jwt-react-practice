@@ -1,13 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps*/
 import React, { useEffect, useState } from 'react'
 import { WelcomeContentGrid, WelcomeMainContainer } from '../../styled-components'
 import { Button, Grid, TextField, Typography } from '@mui/material'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
 import { useActions } from '../../../../hooks/useAction'
+import { useDidMount } from '../../../../hooks/useDidMount'
+import { useNavigate } from 'react-router-dom'
 
 const WelcomeMain = () => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const { userLogin } = useActions()
+  const { isAuth } = useTypedSelector((state) => state.auth)
+  const didMount = useDidMount()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!didMount && isAuth) navigate('/test')
+  }, [isAuth])
   return (
     <WelcomeMainContainer>
       <WelcomeContentGrid container align='center' justifyContent='center' rowSpacing={2}>

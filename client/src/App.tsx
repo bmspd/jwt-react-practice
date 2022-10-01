@@ -1,31 +1,27 @@
-import React, { FC, memo } from 'react'
-import { useTypedSelector } from './hooks/useTypedSelector'
+import React, { ReactNode } from 'react'
 import WelcomePage from './pages/WelcomePage'
 import { CssBaseline } from '@mui/material'
 import './styles.scss'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, useRouteError } from 'react-router-dom'
-interface ErrorBoundaryProps {
-  code?: number
-  message?: string
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import PrivateRoute from './routes/components/PrivateRoute'
+import ErrorBoundary from './routes/components/ErrorBoundary'
+import Menu from './layouts/Menu'
+
+interface RouteWithMenuProps {
+  isPrivate: boolean
+  children: ReactNode
 }
 
-const ErrorBoundary: FC<ErrorBoundaryProps> = memo(({ code, message }) => {
-  const error = useRouteError()
-  if (!code && !message) return <h1>DEFAULT ERROR BOUNDARY</h1>
-  return (
-    <div>
-      <h1>ERROR BOUNDARY!!!</h1>
-      <h2>
-        {code}: {message}
-      </h2>
-    </div>
-  )
-})
-const PrivateRoute = ({ children }: { children: React.ReactElement }) => {
-  const { isAuth } = useTypedSelector((state) => state.auth)
-  if (!isAuth) return <ErrorBoundary code={401} message='Unauthorized!' />
-  return children
+const RouteWithMenu = ({ isPrivate, children }: RouteWithMenuProps) => {
+  if (isPrivate)
+    return (
+      <PrivateRoute>
+        <Menu>{children}</Menu>
+      </PrivateRoute>
+    )
+  return <Menu>{children}</Menu>
 }
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -34,9 +30,9 @@ function App() {
         <Route
           path='test'
           element={
-            <PrivateRoute>
+            <RouteWithMenu isPrivate={true}>
               <h1>Success!</h1>
-            </PrivateRoute>
+            </RouteWithMenu>
           }
           errorElement={<ErrorBoundary />}
         />
